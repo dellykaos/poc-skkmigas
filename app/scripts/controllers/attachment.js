@@ -5,6 +5,26 @@ angular.module('pocApp')
 
   })
   .controller('AttachmentUploadCtrl', function ($scope, $http) {
+    
+    $scope.file_changed = function(element) {
+        var file = document.getElementById('file').files[0];
+
+        if(file.size > 1048576){ // 1 MB
+          alert("Ukuran maksimal file 1 MB!");
+
+          document.getElementById('file').value =  '';
+        }
+        var extension = file.name.split('.').pop();
+
+        console.log(extension); 
+        if(extension != "pdf"){
+          alert("Hanya file .pdf yang bisa diupload!");
+
+          document.getElementById('file').value =  '';          
+        }
+        console.log(file); 
+    };
+
     $scope.send = function(model){
       var form = new FormData();
       form.append("filedata", document.getElementById('file').files[0]);
@@ -21,9 +41,14 @@ angular.module('pocApp')
         }
       }
 
+      $(".preloader").show();
+
       $http(settings)
         .then(function (d) {
           console.log(d.data);
+          $(".preloader").hide();
+        }, function(err){
+          $(".preloader").hide();
         });
     }
   });

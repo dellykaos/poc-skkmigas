@@ -81,3 +81,11 @@ body {
     border-bottom: 0;
   }
 }
+
+.preloader {
+    display: none;
+    width: 60px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
