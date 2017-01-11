@@ -66,6 +66,21 @@ angular
         controller: 'AttachmentUploadCtrl',
         controllerAs: 'upload'
       })
+      .when('/attachment/detail/:id', {
+        templateUrl: 'views/attachment/detail.html',
+        controller: 'AttachmentDetailCtrl',
+        controllerAs: 'detail'
+      })
+      .when('/attachment/edit/:id', {
+        templateUrl: 'views/attachment/edit.html',
+        controller: 'AttachmentEditCtrl',
+        controllerAs: 'edit'
+      })
+      .when('/attachment/delete/:id', {
+        templateUrl: 'views/attachment/delete.html',
+        controller: 'AttachmentDeleteCtrl',
+        controllerAs: 'delete'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -1,12 +1,44 @@
 'use strict';
 
 angular.module('pocApp')
-  .controller('AttachmentCtrl', function ($scope, $http) {
+  .controller('AttachmentCtrl', function (DTOptionsBuilder, DTColumnBuilder) {
+    var vm = this;
+    vm.dtOptions = DTOptionsBuilder.fromSource('http://192.168.43.122:8080/attachment/index')
+        .withOption('serverSide', true)
+        .withPaginationType('full_numbers');
+    vm.dtColumns = [
+        DTColumnBuilder.newColumn('id').withTitle('ID'),
+        DTColumnBuilder.newColumn('name').withTitle('Name'),
+        DTColumnBuilder.newColumn('contentType').withTitle('Content Type'),
+        DTColumnBuilder.newColumn('size').withTitle('Size'),
+        DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
+          .renderWith(actionsHtml)
+    ];
+
+    function actionsHtml(data, type, full, meta) {
+      var html ='<div class="">' + 
+                  '<a href="' + full.path + '"  class="btn btn-warning" title="Download" download>' +
+                    'Download' +
+                  '</a>' +
+                  '<a href="/#!/attachment/detail/' + full.id + '" class="btn btn-default" title="Detail">' +
+                    'Detail' +
+                  '</a> ' +
+                  '<a href="/#!/attachment/edit/' + full.id + '" class="btn btn-primary" title="Edit">' +
+                    'Edit' +
+                  '</a> ' +
+                  '<a href="/#!/attachment/delete/' + full.id + '"  class="btn btn-danger" title="Delete">' +
+                    'Delete' +
+                  '</a>' +
+                '</div>';
+      return html;
+    }
 
   })
-  .controller('AttachmentUploadCtrl', function ($scope, $http) {
+  .controller('AttachmentUploadCtrl', function ($scope, $http, $window) {
+    var downloadUrl = "http://10.3.3.66:8080/share/proxy/alfresco/api/node/content/workspace/SpacesStore/";
     $scope.send = function(model){
       var form = new FormData();
+      var file = document.getElementById('file').files[0];
       form.append("filedata", document.getElementById('file').files[0]);
       form.append("destination", "workspace://SpacesStore/7ca25e4f-c78e-490d-b3b7-db3fb7519e20");
       form.append("containerid", "documentLibrary");
@@ -23,7 +55,83 @@ angular.module('pocApp')
 
       $http(settings)
         .then(function (d) {
-          console.log(d.data);
+          var path = downloadUrl + d.data.nodeRef.replace('workspace://SpacesStore/','');
+          var data = {
+            name: file.name,
+            contentType: file.type,
+            size: file.size,
+            path: path
+          }
+
+          $http.post("http://192.168.43.122:8080/attachment/create", data)
+            .then(function(resp){
+              $window.location.href = "/#!/attachment";
+            });
+        });
+    }
+  })
+.controller('AttachmentDetailCtrl', function ($scope, $http, $routeParams) {
+    $scope.model = {};
+    $http.get("http://192.168.43.122:8080/attachment/show?id="+$routeParams.id)
+      .then(function(resp){
+        $scope.model = resp.data;
+      });
+  })
+.controller('AttachmentEditCtrl', function ($scope, $http, $routeParams, $window) {
+    $scope.model = {};
+    $http.get("http://192.168.43.122:8080/attachment/show?id="+$routeParams.id)
+      .then(function(resp){
+        $scope.model = resp.data;
+      });
+
+    var downloadUrl = "http://10.3.3.66:8080/share/proxy/alfresco/api/node/content/workspace/SpacesStore/";
+    $scope.send = function(model){
+      var form = new FormData();
+      var file = document.getElementById('file').files[0];
+      form.append("filedata", document.getElementById('file').files[0]);
+      form.append("destination", "workspace://SpacesStore/7ca25e4f-c78e-490d-b3b7-db3fb7519e20");
+      form.append("containerid", "documentLibrary");
+      form.append("overwrite", "true");
+
+      var settings = {
+        "url": "http://10.3.3.66:8080/alfresco/service/api/upload?alf_ticket=TICKET_decec884d65414733c9ddca657df2085791567d6",
+        "method": "POST",
+        "data": form,
+        "headers": {
+            'Content-Type': undefined
+        }
+      }
+
+      $http(settings)
+        .then(function (d) {
+          var path = downloadUrl + d.data.nodeRef.replace('workspace://SpacesStore/','');
+          var data = {
+            id: $scope.model.id,
+            name: file.name,
+            contentType: file.type,
+            size: file.size,
+            path: path
+          }
+
+          $http.post("http://192.168.43.122:8080/attachment/update", data)
+            .then(function(resp){
+              $window.location.href = "/#!/attachment/detail/" + $scope.model.id;
+            });
+        });
+    }
+  })
+.controller('AttachmentDeleteCtrl', function ($scope, $http, $routeParams, $window) {
+    $scope.model = {};
+    $http.get("http://192.168.43.122:8080/attachment/show?id="+$routeParams.id)
+      .then(function(resp){
+        $scope.model = resp.data;
+      });
+
+    $scope.send = function(id){
+      console.log(id);
+      $http.delete("http://192.168.43.122:8080/attachment/delete?id="+id)
+        .then(function(resp){
+          $window.location.href = "/#!/attachment";
         });
     }
   });
