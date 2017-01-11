@@ -81,6 +81,56 @@ angular
         controller: 'AttachmentDeleteCtrl',
         controllerAs: 'delete'
       })
+      .when('/shipClass', {
+        templateUrl: 'views/shipClass/index.html',
+        controller: 'ShipClassCtrl',
+        controllerAs: 'index'
+      })
+      .when('/shipClass/detail/:id', {
+        templateUrl: 'views/shipClass/detail.html',
+        controller: 'ShipClassDetailCtrl',
+        controllerAs: 'detail'
+      })
+      .when('/shipClass/create', {
+        templateUrl: 'views/shipClass/create.html',
+        controller: 'ShipClassCreateCtrl',
+        controllerAs: 'create'
+      })
+      .when('/shipClass/edit/:id', {
+        templateUrl: 'views/shipClass/edit.html',
+        controller: 'ShipClassEditCtrl',
+        controllerAs: 'edit'
+      })
+      .when('/shipClass/delete/:id', {
+        templateUrl: 'views/shipClass/delete.html',
+        controller: 'ShipClassDeleteCtrl',
+        controllerAs: 'delete'
+      })
+      .when('/ship', {
+        templateUrl: 'views/ship/index.html',
+        controller: 'ShipCtrl',
+        controllerAs: 'index'
+      })
+      .when('/ship/detail/:id', {
+        templateUrl: 'views/ship/detail.html',
+        controller: 'ShipDetailCtrl',
+        controllerAs: 'detail'
+      })
+      .when('/ship/create', {
+        templateUrl: 'views/ship/create.html',
+        controller: 'ShipCreateCtrl',
+        controllerAs: 'create'
+      })
+      .when('/ship/edit/:id', {
+        templateUrl: 'views/ship/edit.html',
+        controller: 'ShipEditCtrl',
+        controllerAs: 'edit'
+      })
+      .when('/ship/delete/:id', {
+        templateUrl: 'views/ship/delete.html',
+        controller: 'ShipDeleteCtrl',
+        controllerAs: 'delete'
+      })
       .otherwise({
         redirectTo: '/'
       });

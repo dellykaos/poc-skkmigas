@@ -48,6 +48,9 @@
               <li><a ng-href="/">Contact</a></li>
               <li><a ng-href="/#!/crew">Crew</a></li>
               <li><a ng-href="/#!/attachment">Attachment</a></li>
+              <li><a ng-href="/#!/shipClass">Ship Type</a></li>
+              <li><a ng-href="/#!/ship">Ship</a></li>
+              <li><a ng-href="/#!/shipCrew">Ship Crew</a></li>
             </ul>
           </div>
         </div>
@@ -57,6 +60,10 @@
     <div class="container">
     <div ng-view=""></div>
     </div>
+    <div class="preloader">
+      <img src="/images/preloader.gif">  
+    </div>
+    
 
     <div class="footer">
       <div class="container">
@@ -117,6 +124,8 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/crew.js"></script>
         <script src="scripts/controllers/attachment.js"></script>
+        <script src="scripts/controllers/shipClass.js"></script>
+        <script src="scripts/controllers/ship.js"></script>
         <!-- endbuild -->
 </body>
 </html>

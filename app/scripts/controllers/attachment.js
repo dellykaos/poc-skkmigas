@@ -36,6 +36,26 @@ angular.module('pocApp')
   })
   .controller('AttachmentUploadCtrl', function ($scope, $http, $window) {
     var downloadUrl = "http://10.3.3.66:8080/share/proxy/alfresco/api/node/content/workspace/SpacesStore/";
+    
+    $scope.file_changed = function(element) {
+        var file = document.getElementById('file').files[0];
+
+        if(file.size > 1048576){ // 1 MB
+          alert("Ukuran maksimal file 1 MB!");
+
+          document.getElementById('file').value =  '';
+        }
+        var extension = file.name.split('.').pop();
+
+        console.log(extension); 
+        if(extension != "pdf"){
+          alert("Hanya file .pdf yang bisa diupload!");
+
+          document.getElementById('file').value =  '';          
+        }
+        console.log(file); 
+    };
+
     $scope.send = function(model){
       var form = new FormData();
       var file = document.getElementById('file').files[0];
@@ -53,6 +73,8 @@ angular.module('pocApp')
         }
       }
 
+      $(".preloader").show();
+
       $http(settings)
         .then(function (d) {
           var path = downloadUrl + d.data.nodeRef.replace('workspace://SpacesStore/','');
@@ -67,6 +89,9 @@ angular.module('pocApp')
             .then(function(resp){
               $window.location.href = "/#!/attachment";
             });
+          $(".preloader").hide();
+        }, function(err){
+          $(".preloader").hide();
         });
     }
   })

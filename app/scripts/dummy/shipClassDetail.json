@@ -1,0 +1,11 @@
+{
+	"Id": 1,
+	"Name": "Destroyer",
+	"Attachment": {
+		"Id": 1,
+		"Name": "Attachment 1",
+		"ContentType": "sdfdasf",
+		"Size":7868,
+		"Path":"c:/sfsdf/sfsdf"
+	}
+}
