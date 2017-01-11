@@ -91,6 +91,31 @@ angular
         controller: 'ShipClassDeleteCtrl',
         controllerAs: 'delete'
       })
+      .when('/ship', {
+        templateUrl: 'views/ship/index.html',
+        controller: 'ShipCtrl',
+        controllerAs: 'index'
+      })
+      .when('/ship/detail/:id', {
+        templateUrl: 'views/ship/detail.html',
+        controller: 'ShipDetailCtrl',
+        controllerAs: 'detail'
+      })
+      .when('/ship/create', {
+        templateUrl: 'views/ship/create.html',
+        controller: 'ShipCreateCtrl',
+        controllerAs: 'create'
+      })
+      .when('/ship/edit/:id', {
+        templateUrl: 'views/ship/edit.html',
+        controller: 'ShipEditCtrl',
+        controllerAs: 'edit'
+      })
+      .when('/ship/delete/:id', {
+        templateUrl: 'views/ship/delete.html',
+        controller: 'ShipDeleteCtrl',
+        controllerAs: 'delete'
+      })
       .otherwise({
         redirectTo: '/'
       });

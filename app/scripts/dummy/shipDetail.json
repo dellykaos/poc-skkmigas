@@ -1,0 +1,24 @@
+{
+	"Name": "Belisarius",
+	"Class": {
+		"Id": 1,
+		"Name": "Destroyer"
+	},
+	"DockingNumber": 27,
+	"LastMaintenanceDate": "20170110T0000Z",
+	"Manifest": "-",
+	"Crew": [
+		{
+			"Id": 1,
+			"Name": "Fikri"
+		},
+		{
+			"Id": 2,
+			"Name": "Ghani"
+		},
+		{
+			"Id": 3,
+			"Name": "Mang Ghan"
+		}
+	]
+}
