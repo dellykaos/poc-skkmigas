@@ -10,25 +10,25 @@
 angular.module('pocApp')
   .controller('CrewCtrl', function (DTOptionsBuilder, DTColumnBuilder) {
     var vm = this;
-    vm.dtOptions = DTOptionsBuilder.fromSource('/scripts/dummy/crew.json')
-        .withOption('serverSide', false)
+    vm.dtOptions = DTOptionsBuilder.fromSource('http://192.168.43.122:8080/crew/index')
+        .withOption('serverSide', true)
         .withPaginationType('full_numbers');
     vm.dtColumns = [
-        DTColumnBuilder.newColumn('Id').withTitle('ID'),
-        DTColumnBuilder.newColumn('Name').withTitle('Name'),
+        DTColumnBuilder.newColumn('id').withTitle('ID'),
+        DTColumnBuilder.newColumn('name').withTitle('Name'),
         DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
           .renderWith(actionsHtml)
     ];
 
     function actionsHtml(data, type, full, meta) {
       var html ='<div class="">' +
-                  '<a href="/#!/crew/detail/' + full.Id + '" class="btn btn-default" title="Detail">' +
+                  '<a href="/#!/crew/detail/' + full.id + '" class="btn btn-default" title="Detail">' +
                     'Detail' +
                   '</a> ' +
-                  '<a href="/#!/crew/edit/' + full.Id + '" class="btn btn-primary" title="Edit">' +
+                  '<a href="/#!/crew/edit/' + full.id + '" class="btn btn-primary" title="Edit">' +
                     'Edit' +
                   '</a> ' +
-                  '<a href="/#!/crew/delete/' + full.Id + '"  class="btn btn-danger" title="Delete">' +
+                  '<a href="/#!/crew/delete/' + full.id + '"  class="btn btn-danger" title="Delete">' +
                     'Delete' +
                   '</a>' +
                 '</div>';
@@ -38,48 +38,49 @@ angular.module('pocApp')
   })
   .controller('CrewDetailCtrl', function ($scope, $http, $routeParams) {
     $scope.model = {};
-    $http.get("/scripts/dummy/crewdetail.json")
+    $http.get("http://192.168.43.122:8080/crew/show?id="+$routeParams.id)
       .then(function(resp){
         $scope.model = resp.data;
       });
   })
-  .controller('CrewCreateCtrl', function ($scope, $http) {
+  .controller('CrewCreateCtrl', function ($scope, $http, $window) {
     $scope.model = {};
 
     $scope.send = function(model){
       console.log(model);
-      $http.post('url', model)
+      $http.post("http://192.168.43.122:8080/crew/create", model)
         .then(function(resp){
-          console.log(resp);
+          $window.location.href = "/#!/crew";
         });
     }
   })
-  .controller('CrewEditCtrl', function ($scope, $http, $routeParams) {
+  .controller('CrewEditCtrl', function ($scope, $http, $routeParams, $window) {
     $scope.model = {};
-    $http.get("/scripts/dummy/crewdetail.json")
+    $http.get("http://192.168.43.122:8080/crew/show?id="+$routeParams.id)
       .then(function(resp){
         $scope.model = resp.data;
       });
 
     $scope.send = function(model){
       console.log(model);
-      $http.put('url/' + $routeParams.id, model)
+      $http.post("http://192.168.43.122:8080/crew/update", model)
         .then(function(resp){
-          console.log(resp);
+          $window.location.href = "/#!/crew/detail/" + model.id;
         });
     }
   })
-  .controller('CrewDeleteCtrl', function ($scope, $http, $routeParams) {
+  .controller('CrewDeleteCtrl', function ($scope, $http, $routeParams, $window) {
     $scope.model = {};
-    $http.get("/scripts/dummy/crewdetail.json")
+    $http.get("http://192.168.43.122:8080/crew/show?id="+$routeParams.id)
       .then(function(resp){
         $scope.model = resp.data;
       });
 
-    $scope.delete = function(id){
-      $http.delete('url/' + id)
+    $scope.send = function(id){
+      console.log(id);
+      $http.delete("http://192.168.43.122:8080/crew/delete?id="+id)
         .then(function(resp){
-          console.log(resp);
+          $window.location.href = "/#!/crew";
         });
     }
   });

@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'datatables'
+    'datatables',
+    'angularFileUpload'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -54,6 +55,16 @@ angular
         templateUrl: 'views/crew/delete.html',
         controller: 'CrewDeleteCtrl',
         controllerAs: 'delete'
+      })
+      .when('/attachment', {
+        templateUrl: 'views/attachment/index.html',
+        controller: 'AttachmentCtrl',
+        controllerAs: 'index'
+      })
+      .when('/attachment/upload', {
+        templateUrl: 'views/attachment/upload.html',
+        controller: 'AttachmentUploadCtrl',
+        controllerAs: 'upload'
       })
       .otherwise({
         redirectTo: '/'
