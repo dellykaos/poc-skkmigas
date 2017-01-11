@@ -8,27 +8,65 @@
  * Controller of the pocApp
  */
 angular.module('pocApp')
-  .controller('CrewCtrl', function ($scope, $http, DTOptionsBuilder, DTColumnBuilder) {
-    // $scope.crews = {};
-    // $http.get("/scripts/dummy/crew.json")
-    //   .then(function(resp){
-    //     $scope.crews = resp.data;
-    //   });
+  .controller('CrewCtrl', function ($scope) {
   }).controller('CrewAjaxCtrl', function (DTOptionsBuilder, DTColumnBuilder) {
     var vm = this;
     vm.dtOptions = DTOptionsBuilder.fromSource('/scripts/dummy/crew.json')
+        .withOption('serverSide', false)
         .withPaginationType('full_numbers');
     vm.dtColumns = [
         DTColumnBuilder.newColumn('Id').withTitle('ID'),
-        DTColumnBuilder.newColumn('Name').withTitle('Name')
+        DTColumnBuilder.newColumn('Name').withTitle('Name'),
+        DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
+          .renderWith(actionsHtml)
     ];
+
+    function actionsHtml(data, type, full, meta) {
+      var html ='<div class="">' +
+                  '<a href="/#!/crew/detail/' + full.Id + '" class="btn btn-default" title="Detail">' +
+                    'Detail' +
+                  '</a> ' +
+                  '<a href="/#!/crew/edit/' + full.Id + '" class="btn btn-primary" title="Edit">' +
+                    'Edit' +
+                  '</a> ' +
+                  '<a class="btn btn-danger" ng-click="deleteUser(actionData[' + meta.row + '])" title="Delete">' +
+                    'Delete' +
+                  '</a>' +
+                '</div>';
+      return html;
+    }
+
   })
-  .controller('CrewDetailCtrl', function ($scope) {
-  	$scope.test = "testing";
+  .controller('CrewDetailCtrl', function ($scope, $http, $routeParams) {
+    $scope.model = {};
+    $http.get("/scripts/dummy/crewdetail.json")
+      .then(function(resp){
+        $scope.model = resp.data;
+      });
   })
-  .controller('CrewCreateCtrl', function ($scope) {
-  	$scope.test = "testing";
+  .controller('CrewCreateCtrl', function ($scope, $http) {
+    $scope.model = {};
+
+    $scope.send = function(model){
+      console.log(model);
+      $http.post('url', model)
+        .then(function(resp){
+          console.log(resp);
+        });
+    }
   })
-  .controller('CrewEditCtrl', function ($scope) {
-  	$scope.test = "testing";
+  .controller('CrewEditCtrl', function ($scope, $http, $routeParams) {
+    $scope.model = {};
+    $http.get("/scripts/dummy/crewdetail.json")
+      .then(function(resp){
+        $scope.model = resp.data;
+      });
+
+    $scope.send = function(model){
+      console.log(model);
+      $http.put('url/' + $routeParams.id, model)
+        .then(function(resp){
+          console.log(resp);
+        });
+    }
   });
