@@ -66,6 +66,31 @@ angular
         controller: 'AttachmentUploadCtrl',
         controllerAs: 'upload'
       })
+      .when('/shipClass', {
+        templateUrl: 'views/shipClass/index.html',
+        controller: 'ShipClassCtrl',
+        controllerAs: 'index'
+      })
+      .when('/shipClass/detail/:id', {
+        templateUrl: 'views/shipClass/detail.html',
+        controller: 'ShipClassDetailCtrl',
+        controllerAs: 'detail'
+      })
+      .when('/shipClass/create', {
+        templateUrl: 'views/shipClass/create.html',
+        controller: 'ShipClassCreateCtrl',
+        controllerAs: 'create'
+      })
+      .when('/shipClass/edit/:id', {
+        templateUrl: 'views/shipClass/edit.html',
+        controller: 'ShipClassEditCtrl',
+        controllerAs: 'edit'
+      })
+      .when('/shipClass/delete/:id', {
+        templateUrl: 'views/shipClass/delete.html',
+        controller: 'ShipClassDeleteCtrl',
+        controllerAs: 'delete'
+      })
       .otherwise({
         redirectTo: '/'
       });

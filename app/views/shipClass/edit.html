@@ -1,0 +1,32 @@
+<div>
+  <h1>Edit {{model.Name}}</h1>
+  <hr/>
+  <form class="form-horizontal" ng-submit="send(model)">
+  	<div class="form-group">
+  		<label for="Id" class="col-md-3 control-label">ID</label>
+  		<div class="col-md-9">
+  			<p class="form-control-static">
+  				{{model.Id}}
+  			</p>  			
+  		</div>
+  	</div>
+  	<div class="form-group">
+  		<label for="Id" class="col-md-3 control-label">Name</label>
+  		<div class="col-md-9">
+  			<input type="text" ng-model="model.Name" class="form-control">
+  		</div>
+  	</div>
+    <div class="form-group">
+      <label for="AttachmentId" class="col-md-3 control-label">Attachment</label>
+      <div class="col-md-9">
+        <input type="text" ng-model="model.Attachment.Id" class="form-control">
+      </div>
+    </div>
+  	<div class="form-group">
+  		<div class="col-md-9 col-md-offset-3">
+  			<input type="submit" value="Send" class="btn btn-primary">
+        	<a href="/#!/shipClass" class="btn btn-default">Back</a>
+  		</div>
+  	</div>
+  </form>
+</div>
