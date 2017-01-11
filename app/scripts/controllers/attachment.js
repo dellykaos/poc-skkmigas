@@ -7,7 +7,7 @@ angular.module('pocApp')
   .controller('AttachmentUploadCtrl', function ($scope, $http) {
     $scope.send = function(model){
       var form = new FormData();
-      form.append("filedata", $("#file").val());
+      form.append("filedata", document.getElementById('file').files[0]);
       form.append("destination", "workspace://SpacesStore/7ca25e4f-c78e-490d-b3b7-db3fb7519e20");
       form.append("containerid", "documentLibrary");
       form.append("overwrite", "true");
@@ -15,10 +15,11 @@ angular.module('pocApp')
       var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://POC_SI:POC_SI@10.3.3.66:8080/alfresco/service/api/upload",
+        "url": "http://10.3.3.66:8080/alfresco/service/api/upload?alf_ticket=TICKET_decec884d65414733c9ddca657df2085791567d6",
         "method": "POST",
         "processData": false,
         "contentType": false,
+        "dataType": "json",
         "mimeType": "multipart/form-data",
         "data": form
       }
