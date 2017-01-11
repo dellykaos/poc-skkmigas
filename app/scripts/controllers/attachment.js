@@ -19,7 +19,6 @@ angular.module('pocApp')
         "method": "POST",
         "processData": false,
         "contentType": false,
-        "dataType": "json",
         "mimeType": "multipart/form-data",
         "data": form
       }
