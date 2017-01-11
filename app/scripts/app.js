@@ -50,6 +50,11 @@ angular
         controller: 'CrewDetailCtrl',
         controllerAs: 'detail'
       })
+      .when('/crew/delete/:id', {
+        templateUrl: 'views/crew/delete.html',
+        controller: 'CrewDeleteCtrl',
+        controllerAs: 'delete'
+      })
       .otherwise({
         redirectTo: '/'
       });

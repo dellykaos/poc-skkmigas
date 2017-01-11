@@ -8,8 +8,7 @@
  * Controller of the pocApp
  */
 angular.module('pocApp')
-  .controller('CrewCtrl', function ($scope) {
-  }).controller('CrewAjaxCtrl', function (DTOptionsBuilder, DTColumnBuilder) {
+  .controller('CrewCtrl', function (DTOptionsBuilder, DTColumnBuilder) {
     var vm = this;
     vm.dtOptions = DTOptionsBuilder.fromSource('/scripts/dummy/crew.json')
         .withOption('serverSide', false)
@@ -29,7 +28,7 @@ angular.module('pocApp')
                   '<a href="/#!/crew/edit/' + full.Id + '" class="btn btn-primary" title="Edit">' +
                     'Edit' +
                   '</a> ' +
-                  '<a class="btn btn-danger" ng-click="deleteUser(actionData[' + meta.row + '])" title="Delete">' +
+                  '<a href="/#!/crew/delete/' + full.Id + '"  class="btn btn-danger" title="Delete">' +
                     'Delete' +
                   '</a>' +
                 '</div>';
@@ -65,6 +64,20 @@ angular.module('pocApp')
     $scope.send = function(model){
       console.log(model);
       $http.put('url/' + $routeParams.id, model)
+        .then(function(resp){
+          console.log(resp);
+        });
+    }
+  })
+  .controller('CrewDeleteCtrl', function ($scope, $http, $routeParams) {
+    $scope.model = {};
+    $http.get("/scripts/dummy/crewdetail.json")
+      .then(function(resp){
+        $scope.model = resp.data;
+      });
+
+    $scope.delete = function(id){
+      $http.delete('url/' + id)
         .then(function(resp){
           console.log(resp);
         });
