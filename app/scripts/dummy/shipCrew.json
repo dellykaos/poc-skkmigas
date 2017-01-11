@@ -1,0 +1,38 @@
+[
+	{
+		"ShipName": "Belisarius",
+		"CrewId": 1
+	},
+	{
+		"ShipName": "Belisarius",
+		"CrewId": 2
+	},
+	{
+		"ShipName": "Belisarius",
+		"CrewId": 3
+	},
+	{
+		"ShipName": "Belisarius II",
+		"CrewId": 1
+	},
+	{
+		"ShipName": "Belisarius II",
+		"CrewId": 2
+	},
+	{
+		"ShipName": "Belisarius II",
+		"CrewId": 3
+	},
+	{
+		"ShipName": "Belisarius III",
+		"CrewId": 1
+	},
+	{
+		"ShipName": "Belisarius III",
+		"CrewId": 2
+	},
+	{
+		"ShipName": "Belisarius III",
+		"CrewId": 3
+	}
+]

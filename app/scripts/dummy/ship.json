@@ -1,0 +1,286 @@
+[
+	{
+		"Name": "Belisarius",
+		"Class": {
+			"Id": 1,
+			"Name": "Destroyer"
+		},
+		"DockingNumber": 27,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 1,
+				"Name": "Fikri"
+			},
+			{
+				"Id": 2,
+				"Name": "Ghani"
+			},
+			{
+				"Id": 3,
+				"Name": "Mang Ghan"
+			}
+		]
+	},
+	{
+		"Name": "Belisarius II",
+		"Class": {
+			"Id": 2,
+			"Name": "Friggate"
+		},
+		"DockingNumber": 28,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 4,
+				"Name": "Mang Kir"
+			},
+			{
+				"Id": 5,
+				"Name": "Crew 5"
+			},
+			{
+				"Id": 6,
+				"Name": "Crew 6"
+			}
+		]
+	},
+	{
+		"Name": "Belisarius III",
+		"Class": {
+			"Id": 3,
+			"Name": "Battleship"
+		},
+		"DockingNumber": 29,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "Celerity",
+		"Class": {
+			"Id": 1,
+			"Name": "Destroyer"
+		},
+		"DockingNumber": 30,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 10,
+				"Name": "Crew 10"
+			},
+			{
+				"Id": 11,
+				"Name": "Crew 11"
+			}
+		]
+	},
+	{
+		"Name": "Celerity II",
+		"Class": {
+			"Id": 2,
+			"Name": "Friggate"
+		},
+		"DockingNumber": 31,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "Celerity III",
+		"Class": {
+			"Id": 3,
+			"Name": "Battleship"
+		},
+		"DockingNumber": 32,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "The Javelin",
+		"Class": {
+			"Id": 4,
+			"Name": "Dreadnought"
+		},
+		"DockingNumber": 11,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "The Javelin II",
+		"Class": {
+			"Id": 3,
+			"Name": "Battleship"
+		},
+		"DockingNumber": 21,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "The Javelin III",
+		"Class": {
+			"Id": 2,
+			"Name": "Friggate"
+		},
+		"DockingNumber": 107,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "The Sonne",
+		"Class": {
+			"Id": 4,
+			"Name": "Dreadnought"
+		},
+		"DockingNumber": 27,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew":[
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "The Sonne II",
+		"Class": {
+			"Id": 3,
+			"Name": "Battleship"
+		},
+		"DockingNumber": 22,
+		"LastMaintenanceDate": "20170110T0000Z",
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	},
+	{
+		"Name": "The Sonne III",
+		"Class": {
+			"Id": 2,
+			"Name": "Friggate"
+		},
+		"DockingNumber": 88,
+		"LastMaintenanceDate": null,
+		"Manifest": "-",
+		"Crew": [
+			{
+				"Id": 7,
+				"Name": "Crew 7"
+			},
+			{
+				"Id": 8,
+				"Name": "Crew 8"
+			},
+			{
+				"Id": 9,
+				"Name": "Crew 9"
+			}
+		]
+	}
+]
